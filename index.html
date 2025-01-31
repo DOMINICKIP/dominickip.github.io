@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominic's Portfolio Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <!-- fonts (confirm link) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,900
+    |Source+Sans+Pro:300,900&display=swap">
+    
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="HTML tag logo">
+        </div>
+        <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="#home"class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="#services"class="nav__link">My Skills</a></li>
+                <li class="nav__item"><a href="#about"class="nav__link">About me </a></li>
+                <li class="nav__item"><a href="#experience"class="nav__link">Experience </a></li>
+                <li class="nav__item"><a href="#work"class="nav__link">My work</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Introduction-->
+
+    <section class="intro" id="home">
+        <h1 class="section__title section__title--intro">
+            Hello, I am <strong> Dominic Rono</strong>
+        </h1>
+        <p class="section___subtitle  section___subtitle--intro">
+            <strong>
+                Electrical and Computer Engineer
+            </strong> 
+        </p>
+        <img src="img/face.jpg" alt="A picture of Dominic Rono" class="intro__img">
+
+    </section>
+
+    <!-- My Services -->
+<section class="my-services" id="services">
+    <h2 class="section__title section__title--services">Skills</h2>
+
+    <div class="services">
+
+        <!-- AI & Machine Learning -->
+        <div class="service">
+            <div class="service-card">
+                <h3 class="service-card__title">AI & Machine Learning</h3>
+
+                <p class="service-card__description">
+                    I leverage the power of AI to develop <strong>computer vision, NLP, and predictive models</strong>, optimizing solutions for real-world applications.
+                </p>
+
+                <p class="service-card__description">
+                    My expertise includes deploying AI models on cloud platforms and <strong>embedded edge devices</strong> for IoT and security systems.
+                </p>
+
+                <p class="service-card__description">
+                    From <strong>data preprocessing</strong> to <strong>model training</strong>, I develop AI-driven solutions that enhance automation and decision-making.
+                </p>
+            </div>
+        </div>
+
+        <!-- AI-Powered Security Solutions -->
+        <div class="service">
+            <div class="service-card">
+                <h3 class="service-card__title">AI-Powered Security Solutions</h3>
+
+                <p class="service-card__description">
+                    I design and implement <strong>AI-powered CCTV surveillance</strong> and <strong>smart alarm systems</strong> using <strong>computer vision, facial recognition, and anomaly detection.</strong>
+                </p>
+
+                <p class="service-card__description">
+                    My solutions integrate <strong>motion sensors, real-time monitoring, and cloud security dashboards</strong> for advanced threat detection.
+                </p>
+
+                <p class="service-card__description">
+                    With expertise in <strong>OpenCV, TensorFlow, and YOLO</strong>, I create intelligent security systems that provide automated alerts and analysis.
+                </p>
+            </div>
+        </div>
+
+        <!-- Chatbot & AI Integration -->
+        <div class="service">
+            <div class="service-card">
+                <h3 class="service-card__title">Chatbot & AI Integration</h3>
+
+                <p class="service-card__description">
+                    I build intelligent <strong>AI-powered chatbots</strong> using <strong>NLP frameworks</strong> like <strong>spaCy, Rasa, Dialogflow</strong> for customer support and automation.
+                </p>
+
+                <p class="service-card__description">
+                    My expertise includes <strong>speech-to-text (STT) and text-to-speech (TTS)</strong> integration, enabling voice-assisted AI applications.
+                </p>
+
+                <p class="service-card__description">
+                    I ensure seamless chatbot functionality with <strong>API development, database integration</strong>, and real-time user interactions.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- About me -->
+    <section class="about-me" id="about">
+        <h2 class="section__title section__title--about">Who I Am</h2>
+        <p class="section__subtitle section__subtitle--about">
+        An <strong>Electronics</strong> and <strong>Computer</strong> Engineer
+        </p>
+
+        <div class="about-me__body">
+           <p>
+            I specialize in <strong>Embedded Systems, AI model training, chatbot development, smart security solutions, and full-stack web development.</strong>
+           </p>
+           <p>
+            My expertise spans <strong>AI-driven automation, IoT integration, and scalable web applications</strong>, enabling me to develop intelligent security systems, real-time monitoring solutions, and interactive AI-powered assistants.
+           </p>
+        </div>
+    
+        <img src="img/about-me.jpg" alt="Felix working on a computer" class="about-me__img">
+    </section>
+
+
+
+    <!-- Experience -->
+    <section class="experience" id="experience">
+        <h2 class="section__title section__title--experience">Experience</h2>
+
+        <div class="experience__container">
+            <div class="experience__item">
+                <h3 class="experience__title">Electrical and Computer Engineering Intern</h3>
+                <p class="experience__company">
+                    <a href="https://nakujaproject.com/" class="experience__company__link">Numerical Machining Complex</a>
+                </p>
+                <p class="experience__date">May 2023 - July 2023</p>
+                <p class="experience__description">
+                    Maintenance and repair of CNC machines and electrical machines, CAD/CAM, and Industrial Automation.
+                </p>
+                <p class="experience__skills">
+                    Skills: PLC Programming, Industrial Automation, Electrical Engineering, CAD/CAM.
+                </p>
+            </div>
+
+            <div class="experience__item">
+                <h3 class="experience__title">Freelance Developer</h3>
+                <p class="experience__company">
+                    <a href="https://www.upwork.com/freelancers/~01777ccde1bc049146" class="experience__company__link">Upwork</a>
+                </p>
+                <p class="experience__date">Oct 2022 - Present</p>
+                <p class="experience__description">
+                    Provided back-end development, chatbot development, AI-driven security solutions, and machine learning engineering services. Worked on AI-powered surveillance, NLP chatbots, and smart automation solutions.
+                </p>
+                <p class="experience__skills">
+                    Skills: Python, Django, React, Node.js, PostgreSQL, MySQL, Django Rest Framework, TensorFlow, OpenCV, NLP, AI model training, API development, IoT automation
+                </p>
+            </div>
+            
+
+            <div class="experience__item">
+                <h3 class="experience__title">Open Source Contributor</h3>
+                <p class="experience__date">Sep 2022 - Present</p>
+                <p class="experience__description">
+                    Contributed to various AI, IoT, and security-related open-source projects, improving chatbot frameworks, AI models, and embedded system optimizations. Also, contributed to Generative AI for Google and AI webinars, LLM and Prompt generation since 2024.
+                <p class="experience__skills">
+                    Skills: Python, C++, Django, React, Node.js, TensorFlow, OpenCV, Embedded Systems, NLP, API Development, IoT
+                </p>
+            </div>
+            
+        </div>
+
+    </section>
+
+  <!-- About me -->
+<section class="my-work" id="work">
+    <h2 class="section__title section__title--work">Projects</h2>
+    <p class="section__subtitle section__subtitle--work">AI & IoT Projects</p>
+    <div class="portfolio">
+        
+        <!-- Portfolio image item 01 -->
+        <a href="AI-Object-Detection.html" class="portfolio__item">
+            <img src="img/Captured-Bottle.png" alt="AI-powered Object Detection" class="portfolio__img">
+        </a>
+
+        <!-- Portfolio image item 02 -->
+        <a href="Smart.html" class="portfolio__item">
+            <img src="img/smarthome.png" alt="IoT Smart Home System" class="portfolio__img">
+        </a>
+
+        <!-- Portfolio image item 03 -->
+        <a href="face.html" class="portfolio__item">
+            <img src="img/eye.jpeg" alt="AI Face-Eye-Detection" class="portfolio__img">
+        </a>
+        
+        <!-- Portfolio image item 04 -->
+        <a href="iot.html" class="portfolio__item">
+            <img src="img/iot.webp" alt="IoT Health Monitoring System" class="portfolio__img">
+        </a>
+
+    </div>
+</section>
+
+
+    
+
+    <!--Footer  -->
+    <footer class="footer">
+        <a href="mailto:Dominicrono548@gmail.com" class="footer__link">Dominicrono548@gmail.com</a>
+        <ul class="social-list">
+            
+        <li class="social-list__item">
+                <a href="https://github.com/DOMINICKIP" class="social-list__link">
+                    <i class="fab fa-github"></i>
+                </a>
+        </li> 
+
+        <li class="social-list__item">
+            <a href="http://www.linkedin.com/in/binary-tech-9a437a277" class="social-list__link">
+                <i class="fab fa-linkedin"></i>
+            </a>
+       </li>  
+
+       <li class="social-list__item">
+        <a href="https://facebook.com/ronzdominic" class="social-list__link">
+            <i class="fab fa-facebook"></i>
+        </a>
+        </li>
+
+        <li class="social-list__item">
+            <a href="https://instagram.com/ronzdominic" class="social-list__link">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </li>
+        <li class="social-list__item">
+            <a href="https://x.com/pollengrainss?s=11" class="social-list__link">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        </ul>
+    </footer>
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Monitoring System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,900|Source+Sans+Pro:300,900&display=swap">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="IoT Monitoring System logo">
+        </div>
+        <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="index.html#services" class="nav__link">My Skills</a></li>
+                <li class="nav__item"><a href="index.html#about" class="nav__link">About Me</a></li>
+                <li class="nav__item"><a href="index.html#work" class="nav__link">My Work</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Introduction -->
+    <section class="intro" id="home">
+        <h2 class="section__title section__title--intro">
+            IoT <strong>Monitoring System</strong>
+        </h2>
+        <p class="section___subtitle section___subtitle--intro">
+        </p>
+        <img src="img/iot.webp" alt="IoT Monitoring System screenshot" class="intro__img">
+    </section>
+
+    <div class="portfolio-item-individual">
+        <p>The IoT Monitoring System is developed using a combination of embedded systems and cloud technologies. It provides real-time monitoring of sensors and devices through a centralized dashboard, allowing users to track and analyze environmental data such as temperature, humidity, and device status.</p>
+
+        <p>The system works by connecting IoT devices to a cloud-based platform, with real-time data being sent and displayed on the dashboard for easy monitoring and control. The project utilizes technologies such as:</p>
+        <ul>
+            <li><strong>MQTT Protocol:</strong> For lightweight communication between IoT devices and the server.</li>
+            <li><strong>Node.js:</strong> Backend API to manage device data and interactions.</li>
+            <li><strong>React:</strong> Frontend dashboard to visualize data and monitor devices.</li>
+            <li><strong>AWS IoT Core:</strong> For managing and scaling IoT devices in the cloud.</li>
+        </ul>
+
+        <!--<h4 class="screen_shot_text">Dashboard Example</h4>
+        <img src="img/iot_dashboard_example.png" alt="IoT Dashboard Example">
+
+        <h4 class="screen_shot_text">Sensor Monitoring Example</h4>
+        <img src="img/iot_sensor_example.png" alt="Sensor Monitoring Example">-->
+
+        <h3 class="screen_shot_text"><strong>Here is the code for the IoT Monitoring System:</strong></h3>
+        <pre><code>
+# Node.js Backend Example
+
+const mqtt = require('mqtt');
+const express = require('express');
+const app = express();
+const client = mqtt.connect('mqtt://your-mqtt-broker-url');
+
+// Subscribe to topic
+client.on('connect', function () {
+    client.subscribe('iot/sensor/data', function (err) {
+        if (err) {
+            console.log('Error subscribing:', err);
+        }
+    });
+});
+
+// Handle incoming sensor data
+client.on('message', function (topic, message) {
+    // Process incoming message (sensor data)
+    const sensorData = JSON.parse(message.toString());
+    console.log('Received data:', sensorData);
+});
+
+// Express API to fetch sensor data
+app.get('/api/sensors', (req, res) => {
+    res.json({ temperature: 24, humidity: 60 }); // Example data
+});
+
+app.listen(3000, () => {
+    console.log('IoT Monitoring System API running on port 3000');
+});
+        </code></pre>
+    </div> 
+
+     <!--Footer  -->
+     <footer class="footer">
+        <a href="mailto:Dominicrono548@gmail.com" class="footer__link">Dominicrono548@gmail.com</a>
+        <ul class="social-list">
+            
+        <li class="social-list__item">
+                <a href="https://github.com/DOMINICKIP" class="social-list__link">
+                    <i class="fab fa-github"></i>
+                </a>
+        </li> 
+
+        <li class="social-list__item">
+            <a href="http://www.linkedin.com/in/binary-tech-9a437a277" class="social-list__link">
+                <i class="fab fa-linkedin"></i>
+            </a>
+       </li>  
+
+       <li class="social-list__item">
+        <a href="https://facebook.com/ronzdominic" class="social-list__link">
+            <i class="fab fa-facebook"></i>
+        </a>
+        </li>
+
+        <li class="social-list__item">
+            <a href="https://instagram.com/ronzdominic" class="social-list__link">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </li>
+        <li class="social-list__item">
+            <a href="https://x.com/pollengrainss?s=11" class="social-list__link">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        </ul>
+    </footer>
+    <script src="js/index.js"></script>
+</body>
+</htm

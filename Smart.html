@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,900|Source+Sans+Pro:300,900&display=swap">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="Smart Home logo">
+        </div>
+        <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="index.html#services" class="nav__link">My Skills</a></li>
+                <li class="nav__item"><a href="index.html#about" class="nav__link">About Me</a></li>
+                <li class="nav__item"><a href="index.html#work" class="nav__link">My Work</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Introduction -->
+    <section class="intro" id="home">
+        <h2 class="section__title section__title--intro">
+            Smart <strong>Home System</strong>
+        </h2>
+        <p class="section___subtitle section___subtitle--intro">
+        </p>
+        <img src="img/smarthome.png" alt="Smart Home System screenshot" class="intro__img">
+    </section>
+
+    <div class="portfolio-item-individual">
+        <p>The Smart Home System was developed using an Arduino platform with various sensors and actuators to automate home functionalities such as light control, motion detection, gas detection, and door management. The system is controlled through sensors like LDR, PIR, gas, and ultrasonic sensors.</p>
+
+        <p>The system integrates the following features:</p>
+        <ul>
+            <li><strong>Automatic light control</strong> using LDR (Light Dependent Resistor)</li>
+            <li><strong>Motion detection</strong> via PIR sensor to activate fan or other devices</li>
+            <li><strong>Gas detection</strong> with an alert system (using a piezo buzzer) when hazardous levels are detected</li>
+            <li><strong>Automatic door operation</strong> controlled by a servo motor based on ultrasonic sensor readings</li>
+        </ul>
+
+        <h4 class="screen_shot_text">Light Control</h4>
+        <!--<img src="img/light_control.png" alt="Light Control">-->
+
+        <h4 class="screen_shot_text">Motion Detection</h4>
+        <!--<img src="img/motion_detection.png" alt="Motion Detection">-->
+
+        <h4 class="screen_shot_text">Gas Detection</h4>
+        <!--<img src="img/gas_detection.png" alt="Gas Detection">-->
+
+        <h4 class="screen_shot_text">Automatic Door Control</h4>
+        <!--<img src="img/door_control.png" alt="Door Control">-->
+
+        <h3 class="screen_shot_text"><strong>Here is the code for the Smart Home System:</strong></h3>
+        <pre><code>
+#include &lt;Servo.h&gt;
+
+int output1Value = 0;
+int sen1Value = 0;
+int sen2Value = 0;
+int const gas_sensor = A1;
+int const LDR = A0;
+int limit = 400;
+
+long readUltrasonicDistance(int triggerPin, int echoPin)
+{
+  pinMode(triggerPin, OUTPUT);
+  digitalWrite(triggerPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(triggerPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(triggerPin, LOW);
+  pinMode(echoPin, INPUT);
+  return pulseIn(echoPin, HIGH);
+}
+
+Servo servo_7;
+
+void setup()
+{
+   Serial.begin(9600);
+  pinMode(A0, INPUT);		//LDR
+  pinMode(A1,INPUT);      	//gas sensor
+  pinMode(13, OUTPUT);		//connected to relay
+  servo_7.attach(7, 500, 2500); //servo motor
+
+  pinMode(8,OUTPUT);     	//signal to piezo buzzer
+  pinMode(9, INPUT);		//signal to PIR
+  pinMode(10, OUTPUT);		//signal to npn as switch
+  pinMode(4, OUTPUT);		//Red LED
+  pinMode(3, OUTPUT);		//Green LED
+}
+
+void loop()
+{
+     //------light intensity control------//
+    int val1 = analogRead(LDR);
+  if (val1 > 500) 
+  	{
+    	digitalWrite(13, LOW);
+    Serial.print("Bulb ON = ");
+    Serial.print(val1);
+  	} 
+  else 
+  	{
+    	digitalWrite(13, HIGH);
+     Serial.print("Bulb OFF = ");
+    Serial.print(val1);
+  	}
+
+        //------ light & fan control --------// 
+  sen2Value = digitalRead(9);
+  if (sen2Value == 0) 
+  	{
+    	digitalWrite(10, LOW); //npn as switch OFF
+    	digitalWrite(4, HIGH); // Red LED ON, indicating no motion
+    	digitalWrite(3, LOW); //Green LED OFF
+    Serial.print("     || NO Motion Detected    ");
+  	}
+ 
+  if (sen2Value == 1) 
+  	{
+    	digitalWrite(10, HIGH);//npn as switch ON
+    delay(5000);
+    	digitalWrite(4, LOW); // RED LED OFF
+    	digitalWrite(3, HIGH);//GREEN LED ON, indicating motion detected
+     Serial.print("     || Motion Detected!      ");
+  	}
+
+  int val = analogRead(gas_sensor);      
+  Serial.print("|| Gas Sensor Value = ");
+  Serial.print(val);                   
+  if (val > limit)
+  	{
+    	tone(8, 650);
+  	}
+ 	delay(300);
+ 	noTone(8);
+
+  sen1Value = 0.01723 * readUltrasonicDistance(6, 6);
+
+  if (sen1Value < 100) 
+  	{
+    	servo_7.write(90);
+    Serial.print("     || Door Open!  ; Distance = ");
+    Serial.print(sen1Value);
+  	} 
+  else 
+  	{
+    	servo_7.write(0);
+    Serial.print("     || Door Closed! ; Distance = ");
+    Serial.print(sen1Value);
+  }
+  delay(10);
+}
+        </code></pre>
+        
+    </div> 
+ <!--Footer  -->
+ <footer class="footer">
+    <a href="mailto:Dominicrono548@gmail.com" class="footer__link">Dominicrono548@gmail.com</a>
+    <ul class="social-list">
+        
+    <li class="social-list__item">
+            <a href="https://github.com/Collins-Omariba" class="social-list__link">
+                <i class="fab fa-github"></i>
+            </a>
+    </li> 
+
+    <li class="social-list__item">
+        <a href="https://www.linkedin.com/in/omariba-collins-b28b841b9" class="social-list__link">
+            <i class="fab fa-linkedin"></i>
+        </a>
+   </li>  
+
+   <li class="social-list__item">
+    <a href="https://facebook.com/ronzdominic" class="social-list__link">
+        <i class="fab fa-facebook"></i>
+    </a>
+    </li>
+
+    <li class="social-list__item">
+        <a href="https://instagram.com/ronzdominic" class="social-list__link">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </li>
+    <li class="social-list__item">
+        <a href="https://x.com/pollengrainss?s=11" class="social-list__link">
+            <i class="fab fa-twitter"></i>
+        </a>
+    </li>
+
+    </ul>
+</footer>
+    <script src="js/index.js"></script>
+</body>
+</html>

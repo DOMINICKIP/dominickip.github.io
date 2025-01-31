@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face and Eye Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,900|Source+Sans+Pro:300,900&display=swap">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="Face and Eye Detection logo">
+        </div>
+        <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="index.html#services" class="nav__link">My Skills</a></li>
+                <li class="nav__item"><a href="index.html#about" class="nav__link">About Me</a></li>
+                <li class="nav__item"><a href="index.html#work" class="nav__link">My Work</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Introduction -->
+    <section class="intro" id="home">
+        <h2 class="section__title section__title--intro">
+            Face and <strong>Eye Detection</strong>
+        </h2>
+        <p class="section___subtitle section___subtitle--intro">
+        </p>
+        <img src="img/eye.jpeg" alt="Face and Eye Detection screenshot" class="intro__img">
+    </section>
+
+    <div class="portfolio-item-individual">
+        <p>The Face and Eye Detection application is developed using OpenCV and Python. It captures live video from your webcam and uses pre-trained Haar Cascade classifiers to detect faces and eyes in real-time.</p>
+
+        <p>The application performs the following tasks:</p>
+        <ul>
+            <li><strong>Face Detection:</strong> Detects faces in the video stream and highlights them with a rectangle.</li>
+            <li><strong>Eye Detection:</strong> Detects eyes within the detected faces and highlights them with a smaller rectangle.</li>
+            <li><strong>Real-time Detection:</strong> The application runs in real-time, continuously updating the frame with the detection results.</li>
+        </ul>
+
+        <!--<h4 class="screen_shot_text">Face Detection Example</h4>
+        <img src="img/face_detection_example.png" alt="Face Detection Example">
+
+        <h4 class="screen_shot_text">Eye Detection Example</h4>
+        <img src="img/eye_detection_example.png" alt="Eye Detection Example">-->
+
+        <h3 class="screen_shot_text"><strong>Here is the code for the Face and Eye Detection Application:</strong></h3>
+        <pre><code>
+import numpy as np
+import cv2
+
+cap = cv2.VideoCapture(0)
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
+
+while(True):
+    ret, frame = cap.read()
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+    
+    for(x,y,w,h) in faces:
+        cv2.rectangle(frame, (x,y), (x+w, y+h), (255,0,0), 5)
+        roi_gray = gray[y:y+h, x:x+w]
+        roi_color = frame[y:y+h, x:x+w] 
+        eyes = eye_cascade.detectMultiScale(roi_gray, 1.3, 5)
+        
+        for(ex,ey,ew,eh) in eyes:
+            cv2.rectangle(roi_color, (ex,ey), (ex+ew, ey+eh), (0,255,0), 2)
+    
+    cv2.imshow('frame', frame)
+    
+    if cv2.waitKey(1) == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+        </code></pre>
+
+    </div> 
+
+       <!--Footer  -->
+       <footer class="footer">
+        <a href="mailto:Dominicrono548@gmail.com" class="footer__link">Dominicrono548@gmail.com</a>
+        <ul class="social-list">
+            
+        <li class="social-list__item">
+                <a href="https://github.com/DOMINICKIP" class="social-list__link">
+                    <i class="fab fa-github"></i>
+                </a>
+        </li> 
+
+        <li class="social-list__item">
+            <a href="http://www.linkedin.com/in/binary-tech-9a437a277" class="social-list__link">
+                <i class="fab fa-linkedin"></i>
+            </a>
+       </li>  
+
+       <li class="social-list__item">
+        <a href="https://facebook.com/ronzdominic" class="social-list__link">
+            <i class="fab fa-facebook"></i>
+        </a>
+        </li>
+
+        <li class="social-list__item">
+            <a href="https://instagram.com/ronzdominic" class="social-list__link">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </li>
+        <li class="social-list__item">
+            <a href="https://x.com/pollengrainss?s=11" class="social-list__link">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        </ul>
+    </footer>
+    <script src="js/index.js"></script>
+</body>
+</html>
