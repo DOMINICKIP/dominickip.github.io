@@ -325,7 +325,7 @@ header{
 .services{
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 2rem; /* Adjust gap between service cards */
 }
 
@@ -337,7 +337,6 @@ header{
     box-shadow: var(--bs);
     transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
     opacity: 0.9; /* Set the initial opacity (adjust as needed) */
-    width: maximum;
 }
 
 .service:hover {
